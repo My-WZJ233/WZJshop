@@ -13,6 +13,15 @@ Page({
     this.getData()
   },
 
+  onChange(event) {
+    const {index} = event.detail
+    if (index == 0) this.setData({search: {sales: 1}})
+    if (index == 1) this.setData({search: {recommend: 1}})
+    if (index == 2) this.setData({search: {new: 1}})
+    this.setData({goods: [], page: 1})
+    this.getData(index)
+},
+
   /**
    * 页面触底事件
    */
