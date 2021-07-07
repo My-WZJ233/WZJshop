@@ -1,0 +1,15 @@
+.login-page {
+    padding: 100rpx 0;
+}
+
+.login-btn {
+    padding: 40rpx;
+}
+
+.text-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    padding: 0 40rpx;
+    font-size: 28rpx;
+}

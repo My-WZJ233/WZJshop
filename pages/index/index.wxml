@@ -11,7 +11,7 @@
 </van-tabs>
 
 <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ goods }}">
+  <van-grid-item use-slot wx:for="{{ goods }}" wx:key="index">
     <image
             style="width: 100%; height: 280rpx;"
             src="{{item.cover_url}}"
@@ -27,3 +27,5 @@
 <view wx:if="{{isLoading}}" class="loading">
   <van-loading>加载中...</van-loading>
 </view>
+
+<van-divider wx:if="{{isLast}}" contentPosition="center">没有更多数据了</van-divider>
