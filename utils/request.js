@@ -1,4 +1,4 @@
-const app = getApp()
+import {baseUrl} from "./config";
 
 const toast = (title, reject) => {
     wx.showToast({
@@ -12,7 +12,7 @@ const request = (url, method = "GET", data = {}) => {
     return new Promise((resolve, reject) => {
         wx.showLoading({title: '加载中..'})
         wx.request({
-            url: app.globalData.baseUrl + url,
+            url: baseUrl + url,
             method,
             data,
             header: {

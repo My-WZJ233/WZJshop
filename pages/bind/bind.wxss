@@ -1,0 +1,10 @@
+/* pages/bind/bind.wxss */
+.op {
+    padding: 0 40rpx;
+    text-align: center;
+    margin-top: 100rpx;
+}
+.skip {
+    color: #a1a1a1;
+    margin-top: 40rpx;
+}

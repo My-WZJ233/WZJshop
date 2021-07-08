@@ -18,7 +18,19 @@ const min = (str, len) => {
     return false
 }
 
+/**
+ * 是否是相同的字符串
+ * @param str1
+ * @param str2
+ * @returns {boolean}
+ */
+const confirm = (str1, str2) => {
+    if(str1 == str2) return true
+    return false
+}
+
 module.exports = {
     email,
-    min
+    min,
+    confirm
 }

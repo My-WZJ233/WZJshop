@@ -1,4 +1,50 @@
-<!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class="avatar">
+    <van-image
+            round
+            width="240rpx"
+            height="240rpx"
+            src="{{avatar}}"
+    />
+</view>
+
+<view class="register-page">
+    <van-cell-group>
+        <van-field
+                model:value="{{ name }}"
+                label="昵称"
+                placeholder="点击获取用户信息"
+                error-message="{{error_name}}"
+                bind:click-input="getWxUserInfo"
+                readonly
+        />
+        <van-field
+                model:value="{{ email }}"
+                label="邮箱"
+                placeholder="请输入邮箱"
+                error-message="{{error_email}}"
+                bind:change="checkInput"
+        />
+        <van-field
+                model:value="{{ password }}"
+                label="密码"
+                placeholder="请输入密码"
+                password
+                error-message="{{error_password}}"
+                bind:change="checkInput"
+        />
+        <van-field
+                model:value="{{ password_confirmation }}"
+                label="确认密码"
+                placeholder="请输入确认密码"
+                password
+                error-message="{{error_password_confirm}}"
+                bind:change="checkInput"
+        />
+    </van-cell-group>
+
+    <view class="register-btn">
+        <van-button block type="primary" bindtap="register">注册</van-button>
+    </view>
+</view>
 
 <van-toast id="van-toast" />

@@ -1,0 +1,8 @@
+<van-empty description="你还未绑定微信"></van-empty>
+
+<view class="op">
+    <van-button type="primary" block bind:click="bind">立即绑定</van-button>
+    <view class="skip" bindtap="skip">暂时跳过, 以后再说</view>
+</view>
+
+<van-toast id="van-toast" />
