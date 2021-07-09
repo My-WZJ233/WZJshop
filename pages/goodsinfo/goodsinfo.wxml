@@ -1,2 +1,57 @@
-<!--pages/goodsinfo/goodsinfo.wxml-->
-<text>pages/goodsinfo/goodsinfo.wxml</text>
+<van-image
+        width="750rpx"
+        height="500rpx"
+        fit="contain"
+        src="{{goodsInfo.cover_url}}"
+/>
+
+<view class="top">
+    <view class="title van-multi-ellipsis--l2">{{goodsInfo.title}}</view>
+    <view class="van-multi-ellipsis--l2 description">{{goodsInfo.description}}</view>
+    <view class="des">
+        <view class="price">¥ {{goodsInfo.price}}</view>
+        <view class="sales">销量 {{goodsInfo.sales}}</view>
+    </view>
+</view>
+
+<van-tabs sticky>
+    <van-tab title="详情">
+        <view class="info">
+            <rich-text nodes="{{goodsInfo.details}}"></rich-text>
+        </view>
+    </van-tab>
+    <van-tab title="评论">
+        <view class="comment">
+<!--            <view wx:for="{{3}}" wx:key="*this" class="comment-item">-->
+<!--                <van-image-->
+<!--                        round-->
+<!--                        width="120rpx"-->
+<!--                        height="120rpx"-->
+<!--                        src="https://img.yzcdn.cn/vant/cat.jpeg"-->
+<!--                />-->
+<!--                <view>-->
+<!--                    <view class="comment-content van-multi-ellipsis&#45;&#45;l2">这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错</view>-->
+<!--                    <view class="comment-time">2020-02-22</view>-->
+<!--                </view>-->
+<!--            </view>-->
+            <van-empty></van-empty>
+        </view>
+    </van-tab>
+    <van-tab title="推荐">
+        <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
+            <van-grid-item use-slot wx:for="{{ likeGoods }}">
+                <goods-card goods="{{item}}"></goods-card>
+            </van-grid-item>
+        </van-grid>
+    </van-tab>
+</van-tabs>
+
+<van-goods-action>
+    <van-goods-action-icon icon="home-o" text="首页" url="/pages/index/index" link-type="switchTab"/>
+    <van-goods-action-icon icon="cart-o" text="购物车" url=""/>
+    <van-goods-action-icon icon="goods-collect-o" text="收藏" bind:click="onCollect" />
+    <van-goods-action-button
+            text="加入购物车"
+            bind:click="onAddCart"
+    />
+</van-goods-action>
