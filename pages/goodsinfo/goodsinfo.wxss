@@ -1,0 +1,65 @@
+/* pages/goodsinfo/goodsinfo.wxss */
+.info, .comment {
+    padding-bottom: 120rpx;
+}
+.info image, .info img {
+    width: 100%;
+}
+.top {
+    margin: 40rpx 0;
+    padding: 30rpx 40rpx;
+    background: white;
+}
+.title {
+    font-size: 36rpx;
+    font-weight: 600;
+}
+.des {
+    margin-top: 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.price {
+    font-size: 36rpx;
+    color: red;
+    font-weight: 600;
+}
+.sales {
+    color: #333;
+}
+.comment-item {
+    background: white;
+    height: 160rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    padding: 40rpx;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.comment-item > view {
+    width: 600rpx;
+}
+.comment-content {
+    padding-left: 40rpx;
+}
+.comment-time {
+    margin-top: 12rpx;
+    color: #aaa;
+    padding-left: 40rpx;
+}
+.name {
+    color: #888;
+    margin-bottom: 12rpx;
+}
+.like_desc {
+    margin-top: 20rpx;
+}
+.collect {
+    margin-left: 20rpx;
+}
+.description {
+    margin-top: 12rpx;
+    color: #999;
+    font-size: 26rpx;
+}

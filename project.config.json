@@ -46,6 +46,7 @@
     "compileType": "miniprogram",
     "libVersion": "2.18.0",
     "appid": "wx22eed29ec2fa1122",
+    "secret": "fb82f44ab5749507414c9833aec1c73a",
     "projectname": "WZJshop",
     "debugOptions": {
         "hidedInDevtools": []

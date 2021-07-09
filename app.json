@@ -6,7 +6,8 @@
     "pages/center/center",
     "pages/login/login",
     "pages/register/register",
-    "pages/bind/bind"
+    "pages/bind/bind",
+    "pages/goodsinfo/goodsinfo"
   ],
   "window":{
     "backgroundTextStyle":"light",

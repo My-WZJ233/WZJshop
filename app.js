@@ -10,15 +10,14 @@ App({
     wx.login({
       success (res) {
         if (res.code) {
-          console.log(res.code);
+          // console.log(res.code);
           // 发送code给服务端, 让服务端校验用户授权状态
           const data = {
-            appid: 'wx8f68e4ed3aa335af', // 真实项目不要传此参数
-            secret:'300ce24af7de21f95d8a8502daabf7d8', // 真实项目不要传此参数
+            appid: 'wx22eed29ec2fa1122',
+            secret:'fb82f44ab5749507414c9833aec1c73a',
             js_code: res.code
           }
           getOpenid(data).then(res2 => {
-            console.log(res2);
             // 缓存一下openid, 后续有些操作会用到
             wx.setStorageSync('openid', res2.openid)
             // 如果当前登录的微信用户已经使用openid注册过, 或者绑定过账号, 那么就能获取到用户信息

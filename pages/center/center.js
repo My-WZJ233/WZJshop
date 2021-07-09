@@ -1,4 +1,8 @@
 import checkLogin from "../../utils/checkLogin";
+import {logout} from "../../service/auth";
+import toast from '../../utils/toast'
+import {bindOpenid} from "../../service/auth";
+import {updateUserInfoCache} from '../../utils/auth'
 
 Page({
 
@@ -6,62 +10,87 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        userInfo: {},
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        // 检查登录
         checkLogin()
+
+        // 从缓存里取出用户信息
+        this.setData({
+            userInfo: wx.getStorageSync('userInfo')
+        })
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 绑定或者解绑微信
      */
-    onReady: function () {
+    bindOrUnbind() {
+        // 1. 区分绑定还是解绑
+        const {openid} = this.data.userInfo
+        let type = 'bind'
+        if (openid) type = 'unbind'
 
-    },
+        // 区分提示类型
+        const msg = type == 'bind' ? '绑定' : '解绑'
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
+        // 弹窗提醒
+        wx.showModal({
+            title: '提示',
+            content: '你确定要' + msg,
+            success: res => {
+                if (res.confirm) {
+                    this.doBindOrUnbind(type, msg)
+                }
+            }
+        })
 
     },
 
     /**
-     * 页面上拉触底事件的处理函数
+     * 发送请求, 执行绑定或者解绑
      */
-    onReachBottom: function () {
+    doBindOrUnbind(type, msg) {
+        // 请求参数
+        const data = {
+            type,
+            openid: wx.getStorageSync('openid')
+            // 必须用自己的openid, 不要用userInfo里面的openid, 
+        }
 
+        // 2. 请求api, 执行绑定或者解绑
+        bindOpenid(data).then(() => {
+            // 3. 更新用户信息
+            updateUserInfoCache(res => {
+                this.setData({
+                    userInfo: res
+                })
+
+                toast.success(msg + '成功')
+            })
+        })
     },
 
     /**
-     * 用户点击右上角分享
+     * 退出登录
      */
-    onShareAppMessage: function () {
+    logout() {
+        // 1. 发送请求,让服务端token失效
+        logout().then(() => {
+            // 2. 清除本地缓存
+            wx.removeStorageSync('access_token')
+            wx.removeStorageSync('userInfo')
 
+            // 3. 弹窗提醒
+            toast.success('退出成功', () => {
+                // 4. 跳转到首页
+                wx.reLaunch({url: '/pages/index/index'})
+            })
+
+        })
     }
 })

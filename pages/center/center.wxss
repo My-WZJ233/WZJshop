@@ -1,1 +1,28 @@
 /* pages/center/center.wxss */
+.avatar {
+    text-align: center;
+    padding: 60rpx 0;
+}
+.nickname {
+    margin-top: 20rpx;
+    font-size: 32rpx;
+    color: #666;
+}
+.list {
+    border-radius: 20rpx;
+    overflow: hidden;
+    width: 700rpx;
+    margin: 0 auto;
+}
+.btn-logout {
+    padding: 0 40rpx 80rpx;
+    margin-top: 60rpx;
+}
+
+.bind {
+    color: green;
+}
+
+.unbind {
+    color: red;
+}

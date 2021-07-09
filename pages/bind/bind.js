@@ -1,5 +1,5 @@
 import {bindOpenid} from "../../service/auth";
-import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
+import toast from '../../utils/toast'
 const {back} = require('../../utils/auth')
 
 Page({
@@ -28,13 +28,10 @@ Page({
             openid: wx.getStorageSync('openid')
         }
         bindOpenid(data).then(() => {
-            Toast({
-                type: 'success',
-                message: '绑定成功',
-                onClose: () => {
-                    back()
-                },
-            });
+            // 绑定成功弹窗
+            toast.success('绑定成功', () => {
+                back()
+            })
         })
     },
 

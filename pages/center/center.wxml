@@ -1,2 +1,32 @@
-<!--pages/center/center.wxml-->
-<text>pages/center/center.wxml</text>
+<view class="avatar">
+    <van-image
+            round
+            width="240rpx"
+            height="240rpx"
+            src="{{userInfo.avatar_url}}"
+    />
+    <view class="nickname">{{userInfo.name}}</view>
+</view>
+
+<view class="list">
+    <van-cell-group border="{{false}}">
+        <van-cell title="个人信息" url="/pages/index/index" icon="user-o" is-link/>
+        <van-cell title="收货地址" url="" icon="location-o" is-link/>
+        <van-cell title="我的订单" url="" icon="orders-o" is-link/>
+        <van-cell title="我的收藏" url="" icon="goods-collect-o" is-link/>
+        <van-cell title="修改密码" url="" icon="edit" is-link/>
+        <van-cell title="绑定微信"
+                  icon="setting-o" is-link
+                 bindtap="bindOrUnbind"
+        >
+            <text wx:if="{{userInfo.openid}}" class="bind">已绑定</text>
+            <text wx:else class="unbind">未绑定</text>
+        </van-cell>
+    </van-cell-group>
+</view>
+
+<view class="btn-logout">
+    <van-button type="primary" block bindtap="logout">退出登录</van-button>
+</view>
+
+<van-toast id="van-toast" />

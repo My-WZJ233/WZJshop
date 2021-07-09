@@ -12,15 +12,7 @@
 
 <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
   <van-grid-item use-slot wx:for="{{ goods }}" wx:key="index">
-    <image
-            style="width: 100%; height: 280rpx;"
-            src="{{item.cover_url}}"
-    />
-    <view class="title text-truncate">{{item.title}}</view>
-    <view class="info">
-      <text class="price">￥{{item.price}}</text>
-      <text class="buy">{{item.sales}}人购买</text>
-    </view>
+    <goods-card goods="{{item}}"></goods-card>
   </van-grid-item>
 </van-grid>
 
