@@ -22,18 +22,6 @@
     </van-tab>
     <van-tab title="评论">
         <view class="comment">
-<!--            <view wx:for="{{3}}" wx:key="*this" class="comment-item">-->
-<!--                <van-image-->
-<!--                        round-->
-<!--                        width="120rpx"-->
-<!--                        height="120rpx"-->
-<!--                        src="https://img.yzcdn.cn/vant/cat.jpeg"-->
-<!--                />-->
-<!--                <view>-->
-<!--                    <view class="comment-content van-multi-ellipsis&#45;&#45;l2">这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错这商品不错</view>-->
-<!--                    <view class="comment-time">2020-02-22</view>-->
-<!--                </view>-->
-<!--            </view>-->
             <van-empty></van-empty>
         </view>
     </van-tab>
