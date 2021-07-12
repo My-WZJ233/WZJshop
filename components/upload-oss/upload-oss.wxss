@@ -1,0 +1,9 @@
+.van-uploader__preview-image{
+    width: 240rpx !important;
+    height: 240rpx !important;
+    border-radius: 50%;
+}
+.van-uploader__preview-delete {
+    top: 20rpx;
+    right: 20rpx;
+}

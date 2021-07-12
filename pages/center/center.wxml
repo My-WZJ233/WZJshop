@@ -1,10 +1,13 @@
 <view class="avatar">
-    <van-image
-            round
-            width="240rpx"
-            height="240rpx"
-            src="{{userInfo.avatar_url}}"
-    />
+    <upload-oss bindgetfilekey="getFileKey">
+        <van-image
+                round
+                width="240rpx"
+                height="240rpx"
+                src="{{userInfo.avatar_url}}"
+        />
+    </upload-oss>
+
     <view class="nickname">{{userInfo.name}}</view>
 </view>
 

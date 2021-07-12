@@ -22,7 +22,19 @@
     </van-tab>
     <van-tab title="评论">
         <view class="comment">
-            <van-empty></van-empty>
+            <view wx:for="{{comments}}" wx:key="id" class="comment-item">
+                <van-image
+                        round
+                        width="120rpx"
+                        height="120rpx"
+                        src="{{item.user.avatar_url}}"
+                />
+                <view>
+                    <view class="comment-content van-multi-ellipsis--l2">{{item.content}}</view>
+                    <view class="comment-time">{{item.created_at}}</view>
+                </view>
+            </view>
+            <van-empty wx:if="{{comments.length == 0}}"></van-empty>
         </view>
     </van-tab>
     <van-tab title="推荐">
@@ -36,8 +48,8 @@
 
 <van-goods-action>
     <van-goods-action-icon icon="home-o" text="首页" url="/pages/index/index" link-type="switchTab"/>
-    <van-goods-action-icon icon="cart-o" text="购物车" url=""/>
-    <van-goods-action-icon icon="goods-collect-o" text="收藏" bind:click="onCollect" />
+    <van-goods-action-icon info="{{cartsList.length}}" icon="cart-o" text="购物车" url="/pages/cart/cart" link-type="switchTab"/>
+    <van-goods-action-icon icon="goods-collect-o" text="{{isCollect ? '已收藏' : '收藏'}}" bind:click="onCollect" />
     <van-goods-action-button
             text="加入购物车"
             bind:click="onAddCart"

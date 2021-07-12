@@ -1,1 +1,24 @@
 /* pages/cart/cart.wxss */
+.main {
+    padding:30rpx 0 140rpx 40rpx;
+}
+.num {
+    display: inline-block;
+    margin-left: 160rpx;
+}
+.van-card__title, .van-card__desc {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 360rpx;
+}
+.left-checkbox {
+    margin-top: 80rpx;
+    margin-right: 20rpx;
+}
+.van-stepper{
+    position: absolute;
+    top: 120rpx;
+    width: 200rpx;
+    right: 20rpx;
+}

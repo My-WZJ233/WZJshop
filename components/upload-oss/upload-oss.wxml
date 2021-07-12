@@ -1,0 +1,14 @@
+<van-uploader
+        file-list="{{ fileList }}"
+        max-count="1"
+        multiple="{{false}}"
+        use-before-read
+        max-size="{{ 5 * 1024 * 1024}}"
+        accept="image"
+        bind:before-read="beforeRead"
+        bind:after-read="afterRead"
+        bind:oversize="overSize"
+        deletabl="{{true}}"
+>
+ <slot></slot>
+</van-uploader>

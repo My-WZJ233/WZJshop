@@ -1,5 +1,6 @@
 import {bindOpenid} from "../../service/auth";
 import toast from '../../utils/toast'
+import {updateUserInfoCache} from "../../utils/auth";
 const {back} = require('../../utils/auth')
 
 Page({
@@ -28,9 +29,12 @@ Page({
             openid: wx.getStorageSync('openid')
         }
         bindOpenid(data).then(() => {
-            // 绑定成功弹窗
-            toast.success('绑定成功', () => {
-                back()
+            // 绑定成功之后, 更新用户信息
+            updateUserInfoCache(() => {
+                // 绑定成功弹窗提醒
+                toast.success('绑定成功', () => {
+                    back()
+                })
             })
         })
     },

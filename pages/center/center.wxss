@@ -1,4 +1,3 @@
-/* pages/center/center.wxss */
 .avatar {
     text-align: center;
     padding: 60rpx 0;

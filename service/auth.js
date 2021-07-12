@@ -14,3 +14,6 @@ export const bindOpenid = (data) => request.post('/api/auth/wx/bind', data)
 
 // 退出登录
 export const logout = () => request.post('/api/auth/logout')
+
+// oss token
+export const ossToken = () => request.get('/api/auth/oss/token')

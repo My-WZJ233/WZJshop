@@ -1,6 +1,5 @@
 import {login} from "../service/auth";
 import {getUserInfo} from "../service/user";
-// import Toast from "../miniprogram_npm/@vant/weapp/toast/toast";
 import toast from './toast'
 
 /**
@@ -12,7 +11,8 @@ const back = () => {
         url: path
     })
 }
-// 登录
+
+ // 执行登录
 const doLogin = (data, type = 'login') => {
     // 发送请求执行登录
     login(data).then(res => {
@@ -39,15 +39,15 @@ const doLogin = (data, type = 'login') => {
     })
 }
 
-// 更新缓存中的用户信息
+ // 更新缓存中的用户信息
 const updateUserInfoCache = (callback = () => {}) => {
-   // 获取当前登录用户信息
-   getUserInfo().then(res => {
-       // 缓存用户信息
-       wx.setStorageSync('userInfo', res)
-       // 执行回调
-       callback(res)
-   })
+    // 获取当前登录用户信息
+    getUserInfo().then(res => {
+        // 缓存用户信息
+        wx.setStorageSync('userInfo', res)
+        // 执行回调
+        callback(res)
+    })
 }
 
 module.exports = {

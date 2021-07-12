@@ -3,6 +3,7 @@ import {logout} from "../../service/auth";
 import toast from '../../utils/toast'
 import {bindOpenid} from "../../service/auth";
 import {updateUserInfoCache} from '../../utils/auth'
+import {updateAvatar} from "../../service/user";
 
 Page({
 
@@ -59,7 +60,10 @@ Page({
         const data = {
             type,
             openid: wx.getStorageSync('openid')
-            // 必须用自己的openid, 不要用userInfo里面的openid, 
+            /*
+               必须用自己的openid, 不要用userInfo里面的openid, 因为如果你登录了别人的微信,
+               那么你传的就是别人的 openid, 这样就会出现把别人账号解绑的情况
+            */
         }
 
         // 2. 请求api, 执行绑定或者解绑
@@ -91,6 +95,23 @@ Page({
                 wx.reLaunch({url: '/pages/index/index'})
             })
 
+        })
+    },
+
+    /**
+     * 获取上传后的文件的key, 同时自动更新头像
+     */
+    getFileKey(e) {
+        // 发送请求更新头像
+        updateAvatar({avatar: e.detail}).then(() => {
+            // 更新用户缓存
+            updateUserInfoCache(res => {
+                this.setData({
+                    userInfo: res
+                })
+                // 绑定成功弹窗提醒
+                toast.success('更新成功')
+            })
         })
     }
 })

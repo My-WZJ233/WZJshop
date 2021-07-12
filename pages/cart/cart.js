@@ -1,5 +1,5 @@
-// pages/cart/cart.js
 import checkLogin from "../../utils/checkLogin";
+import {getCarsList, changeNum, changeChecked} from "../../service/cart"
 
 Page({
 
@@ -7,7 +7,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        checkedAll: false,
+        allPrice: 0,
+        goods: []
     },
 
     /**
@@ -17,52 +19,121 @@ Page({
         checkLogin()
     },
 
+    onShow() {
+        // 获取购物车列表
+        const params = {
+            include: 'goods'
+        }
+        getCarsList(params).then(res => {
+            this.countPrice(res.data)
+        })
+    },
+
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 选中商品
      */
-    onReady: function () {
+    oneSelect(event) {
+        const id = event.target.id
+        const isChecked = event.detail
+
+        // 让当前点击的商品, 选中或者不选中
+        const goods = this.data.goods.map(item => {
+            if(item.id == id) item.is_checked = isChecked  ? 1 : 0
+            return item
+        })
+
+        // 重新计算价格
+        this.countPrice(goods)
+
+        // 请求API, 设置选中
+        this.changeChecked()
+    },
+
+    /**
+     * 数量改变
+     */
+    numChange(event) {
+        const id = event.target.id
+        const num = event.detail
+
+        // 调用API, 修改购物车数量
+        changeNum(id, {num}).then(() => {
+            // 重新获取购物车列表, 重新计算价格 -- 会额外发送请求, 为了考虑性能, 暂不使用
+            // getCarsList(params).then(res => {
+            //     this.countPrice(res.data)
+            // })
+
+            // 修改指定商品的数量
+            const goods = this.data.goods.map(item => {
+                if(item.id == id) item.num = num
+                return item
+            })
+
+            // 重新计算价格
+            this.countPrice(goods)
+        })
 
     },
 
     /**
-     * 生命周期函数--监听页面显示
+     * 全选
      */
-    onShow: function () {
+    allSelect(event) {
+        const isChecked = event.detail
 
+        // 让所有的商品都选中
+        const goods = this.data.goods.map(item => {
+            item.is_checked = isChecked ? 1 : 0
+            return item
+        })
+        
+        this.setData({
+            checkedAll: isChecked, // 设置全选选中
+        })
+        
+        // 重新计算价格
+        this.countPrice(goods)
+
+        // 请求API, 设置选中
+        this.changeChecked()
     },
 
     /**
-     * 生命周期函数--监听页面隐藏
+     * 计算总价格
      */
-    onHide: function () {
+    countPrice(goods) {
+        this.setData({
+            goods,
+            allPrice: 0
+        })
+        // 遍历所有商品
+        this.data.goods.forEach(item => {
+            // 如果是选中的情况下, 累加价格
+            if(item.is_checked) {
+                this.setData({
+                    allPrice: this.data.allPrice + item.goods.price * item.num * 100
+                })
+            }
+        })
 
+        // 如果商品全部选中, 那么设置全选为 true 
+        const checkAll = this.data.goods.findIndex(item => item.is_checked == 0)
+        this.setData({
+            checkedAll: checkAll == -1 ? true : false
+        })
     },
 
     /**
-     * 生命周期函数--监听页面卸载
+     * 改变购物车的选中
      */
-    onUnload: function () {
+    changeChecked() {
+        // 处理数据, 获取所有选中的商品
+        const data = []
+        this.data.goods.forEach(item => {
+            if(item.is_checked) data.push(item.id)
+        })
 
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+        // 请求API, 将所有选中的商品, 提交给API
+        changeChecked({cart_ids: data})
     }
 })

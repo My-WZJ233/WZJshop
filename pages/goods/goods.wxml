@@ -1,2 +1,8 @@
 <!--pages/goods/goods.wxml-->
 <text>pages/goods/goods.wxml</text>
+
+<view>
+    <upload-oss bindgetfilekey="getFileKey">
+        
+    </upload-oss>
+</view>
