@@ -1,5 +1,11 @@
 import checkLogin from "../../utils/checkLogin";
-import {getCarsList, changeNum, changeChecked} from "../../service/cart"
+// import {getCarsList, changeNum, changeChecked} from "../../service/cart"
+import {
+    getCarsList, 
+    changeNum, 
+    changeChecked, 
+    deleteCart
+} from "../../service/cart"
 
 Page({
 
@@ -106,15 +112,16 @@ Page({
             goods,
             allPrice: 0
         })
-        // 遍历所有商品
-        this.data.goods.forEach(item => {
-            // 如果是选中的情况下, 累加价格
-            if(item.is_checked) {
-                this.setData({
-                    allPrice: this.data.allPrice + item.goods.price * item.num * 100
-                })
+        // 计算已勾选的商品的总价
+        const allPrice = this.data.goods.reduce((previousValue, currentValue) => {
+            if(currentValue.is_checked) {
+                return previousValue + currentValue.num * currentValue.goods.price * 100
+            } else {
+                return previousValue
             }
-        })
+        }, 0)
+
+        this.setData({allPrice})
 
         // 如果商品全部选中, 那么设置全选为 true 
         const checkAll = this.data.goods.findIndex(item => item.is_checked == 0)
@@ -135,5 +142,49 @@ Page({
 
         // 请求API, 将所有选中的商品, 提交给API
         changeChecked({cart_ids: data})
+    },
+
+    /**
+     * 点击移除购物车
+     */
+    onDeleteCart(event) {
+        // 1. 准备请求参数
+        const id = event.target.id
+
+        // 2. 请求API, 执行移除
+        deleteCart(id).then(() => {
+            // 弹窗提醒
+            wx.showToast({
+              title: '移除成功',
+              icon: "success"
+            })
+
+            // 3. 更新展示的数据
+            // 方式一: 从新请求购物车列表, 不建议, 产生了额外的网络请求
+            // 方式二: 直接处理数组, 从数组移除已删除的项目
+            const goods = this.data.goods.filter(item => item.id != id)
+            this.setData({goods})
+        })
+        
+    },
+    
+    /**
+     * 跳转到预览页
+     */
+    toPreview() {
+        // 如果一个商品都没有勾选, 那么就不跳转到结算页
+        const checkSelect = this.data.goods.findIndex(item => item.is_checked == 1)
+
+        if (checkSelect === -1) {
+            wx.showToast({
+              title: '至少选择一个商品',
+              icon: 'none'
+            })
+        } else {
+            wx.navigateTo({
+                url: '/pages/preview/preview',
+            })
+        }
+    
     }
 })

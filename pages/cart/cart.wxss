@@ -5,6 +5,12 @@
 .num {
     display: inline-block;
     margin-left: 160rpx;
+    position: absolute;
+    top: 120rpx;
+    width: 252rpx;
+    right: 10rpx;
+    display: flex;
+    justify-content: space-between;
 }
 .van-card__title, .van-card__desc {
     overflow: hidden;
@@ -15,10 +21,4 @@
 .left-checkbox {
     margin-top: 80rpx;
     margin-right: 20rpx;
-}
-.van-stepper{
-    position: absolute;
-    top: 120rpx;
-    width: 200rpx;
-    right: 20rpx;
 }

@@ -1,3 +1,4 @@
+import checkLogin from "./checkLogin";
 import {baseUrl} from "./config";
 
 const toast = (title, reject) => {
@@ -35,10 +36,8 @@ const request = (url, method = "GET", data = {}) => {
                         // 清空原来缓存的登录信息
                         wx.removeStorageSync('access_token')
                         wx.removeStorageSync('userInfo')
-                        // 记录当前页的页面路径
-                        const back_url = '/' + getCurrentPages().pop().route
-                        wx.setStorageSync('login_back_url', back_url)
-                        wx.redirectTo({url: '/pages/login/login'})
+                        // 缓存来源地址, 并跳转到登录
+                        checkLogin()
                     }
                 } else if (statusCode === 403) { // 没有权限
                     msg = '没有权限'

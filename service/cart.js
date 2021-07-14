@@ -19,3 +19,8 @@ export const changeNum = (id, data = {}) => request.put('/api/carts/' + id, data
  * 改变购物车的选中
  */
 export const changeChecked = (data = {}) => request.patch('/api/carts/checked', data)
+
+/**
+ * 移除购物车
+ */
+export const deleteCart = (id) => request.delete('/api/carts/' + id)

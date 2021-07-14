@@ -27,7 +27,7 @@ const doLogin = (data, type = 'login') => {
             const message = type == 'login' ? '登录成功' : '注册成功'
             toast.success(message, () => {
                 // 登录之后, 如果用户信息中没有openid, 跳转到绑定微信的页面
-                if (type == 'login' && res2.openid == '') {
+                if (type == 'login' && !res2.openid) {
                     wx.redirectTo({
                         url: '/pages/bind/bind'
                     })

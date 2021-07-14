@@ -38,7 +38,8 @@ Page({
         })
 
         // 请求购物车数据
-        this.getCarts()
+        const checkToken = wx.getStorageSync('access_token')
+        if (checkToken) this.getCarts()
     },
 
     /**

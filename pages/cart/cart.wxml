@@ -12,7 +12,10 @@
               desc="{{item.goods.description}}"
               thumb="{{item.goods.cover_url}}"
       >
-        <van-stepper class="num" slot="num" value="{{ item.num }}" id="{{item.id}}" bind:change="numChange"/>
+        <view class="num" slot="num">
+          <van-stepper value="{{ item.num }}" id="{{item.id}}" bind:change="numChange"/>
+          <van-icon name="delete-o" size="40rpx" color="red" bindtap="onDeleteCart" id="{{item.id}}" />
+        </view>
       </van-card>
     </van-col>
   </van-row>
@@ -20,8 +23,8 @@
 
 <van-submit-bar
         price="{{ allPrice }}"
-        button-text="提交订单"
-        bind:submit="onClickButton"
+        button-text="结算"
+        bind:submit="toPreview"
         tip="{{ true }}"
 >
     <van-checkbox value="{{ checkedAll }}" bind:change="allSelect">全选</van-checkbox>

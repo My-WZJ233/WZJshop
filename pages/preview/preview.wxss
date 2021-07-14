@@ -1,0 +1,4 @@
+/* pages/preview/preview.wxss */
+.main {
+    padding: 30rpx 0 120rpx;
+}

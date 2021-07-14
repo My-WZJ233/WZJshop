@@ -1,0 +1,34 @@
+<van-cell wx:if="{{address}}" center title="{{address.province + address.city + address.county + address.address}}"
+          label="{{address.name}} {{address.phone}}" is-link />
+<van-cell wx:else center title="请选择收货地址"
+label="如果没有地址, 可以点击添加" is-link />
+
+<view class="main">
+    <van-card
+            wx:for="{{carts}}"
+            price="{{ item.goods.price }}"
+            num="{{item.num}}"
+            title="{{item.goods.title}}"
+            desc="{{item.goods.description}}"
+            thumb="{{item.goods.cover_url}}"
+    />
+</view>
+
+<van-submit-bar
+        price="{{ allPrice }}"
+        button-text="立即支付"
+        bind:submit="pay"
+        tip="{{ true }}"
+/>
+
+<van-dialog
+        use-slot
+        title="支付"
+        show="{{ showPay }}"
+        show-cancel-button
+        confirm-button-open-type="getUserInfo"
+        bind:close="onClose"
+        bind:getuserinfo="getUserInfo"
+>
+    <image src="https://img.yzcdn.cn/1.jpg" />
+</van-dialog>

@@ -7,7 +7,8 @@
     "pages/login/login",
     "pages/register/register",
     "pages/bind/bind",
-    "pages/goodsinfo/goodsinfo"
+    "pages/goodsinfo/goodsinfo",
+    "pages/preview/preview"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -54,6 +55,9 @@
     "van-checkbox": "@vant/weapp/checkbox/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-card": "@vant/weapp/card/index"
+    "van-card": "@vant/weapp/card/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }
