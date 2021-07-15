@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "添加地址",
+  "usingComponents": {
+    "van-switch": "@vant/weapp/switch/index",
+    "van-area": "@vant/weapp/area/index"
+  }
+}

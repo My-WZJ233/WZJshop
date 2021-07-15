@@ -29,8 +29,19 @@ const confirm = (str1, str2) => {
     return false
 }
 
+/**
+ * 验证手机号
+ * @param phone
+ */
+const phone = phone => {
+    const reg = /^1[3-9][0-9]{9}$/;
+    if(reg.test(phone)) return true
+    return false
+}
+
 module.exports = {
     email,
     min,
-    confirm
+    confirm,
+    phone
 }

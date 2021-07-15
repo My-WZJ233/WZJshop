@@ -8,7 +8,9 @@
     "pages/register/register",
     "pages/bind/bind",
     "pages/goodsinfo/goodsinfo",
-    "pages/preview/preview"
+    "pages/preview/preview",
+    "pages/address/address",
+    "pages/address_add/address_add"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -58,6 +60,8 @@
     "van-card": "@vant/weapp/card/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-cell": "@vant/weapp/cell/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

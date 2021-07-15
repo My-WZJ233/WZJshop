@@ -1,0 +1,12 @@
+.main {
+    height: 86vh;
+}
+.add-bottom {
+    position: fixed;
+    bottom: 40rpx;
+    width: 80%;
+    left: 10%;
+}
+.add-icon {
+    vertical-align: middle;
+}

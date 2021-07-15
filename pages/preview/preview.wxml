@@ -1,7 +1,7 @@
 <van-cell wx:if="{{address}}" center title="{{address.province + address.city + address.county + address.address}}"
-          label="{{address.name}} {{address.phone}}" is-link />
+          label="{{address.name}} {{address.phone}}" is-link  url="/pages/address/address" />
 <van-cell wx:else center title="请选择收货地址"
-label="如果没有地址, 可以点击添加" is-link />
+label="如果没有地址, 可以点击添加" is-link url="/pages/address/address" />
 
 <view class="main">
     <van-card

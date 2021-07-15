@@ -1,0 +1,70 @@
+<view class="address-page">
+    <van-cell-group>
+        <van-field
+                model:value="{{ name }}"
+                label="联系人姓名"
+                required
+                placeholder="联系姓名"
+                error-message="{{error_name}}"
+                bind:change="checkInput"
+        />
+        <van-field
+                model:value="{{ phone }}"
+                label="联系人手机"
+                placeholder="联系人手机"
+                required
+                error-message="{{error_phone}}"
+                bind:change="checkInput"
+        />
+
+        <van-field
+                model:value="{{ selectCity }}"
+                label="选择城市"
+                placeholder="选择城市"
+                required
+                readonly
+                error-message="{{error_city}}"
+                bind:click-input="openCity"
+        >
+            <van-icon slot="right-icon" name="arrow" />
+        </van-field>
+
+        <van-field
+                model:value="{{ address }}"
+                label="详细地址"
+                placeholder="详细地址"
+                required
+                type="textarea"
+                autosize
+                error-message="{{error_address}}"
+                bind:change="checkInput"
+        />
+
+        <van-field
+                label="设为默认"
+                error-message="{{error_password}}"
+        >
+        <van-switch slot="input" size="40rpx" checked="{{ checked }}" bind:change="onChange" style="margin-top:12rpx" />
+        </van-field>
+    </van-cell-group>
+
+    <view class="address-btn">
+        <van-button block type="primary" bindtap="onAddAddress">{{editId ? '编辑地址' : '添加地址'}}</van-button>
+    </view>
+
+    <van-toast id="van-toast" />
+</view>
+
+<van-popup 
+    show="{{ showCity }}"
+    position="bottom"
+    round
+>
+    <van-area 
+    area-list="{{ areaList }}" 
+    bind:cancel="closeCity"
+    bind:confirm="confirmCity"
+    />
+</van-popup>
+
+<van-toast id="van-toast" />

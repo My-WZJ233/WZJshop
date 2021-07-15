@@ -126,7 +126,7 @@ Page({
         // 如果商品全部选中, 那么设置全选为 true 
         const checkAll = this.data.goods.findIndex(item => item.is_checked == 0)
         this.setData({
-            checkedAll: checkAll == -1 ? true : false
+            checkedAll: checkAll == -1 && this.data.goods.length != 0 ? true : false
         })
     },
 

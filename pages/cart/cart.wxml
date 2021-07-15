@@ -21,6 +21,8 @@
   </van-row>
 </view>
 
+<van-empty wx:if="{{goods.length == 0}}"></van-empty>
+
 <van-submit-bar
         price="{{ allPrice }}"
         button-text="结算"

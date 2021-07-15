@@ -1,0 +1,28 @@
+<scroll-view class="main" scroll-y>
+    <van-cell
+            bind:click="selectAddress"
+            wx:for="{{address}}"
+            wx:key="id"
+            center
+            id="{{item.id}}"
+            label="{{item.province + item.city + item.county + item.address}}">
+
+        <view slot="title">
+            <text>{{item.name}} {{item.phone}} </text>
+            <van-tag wx:if="{{item.is_default}}" type="danger">默认</van-tag>
+        </view>
+
+        <view slot="right-icon" >
+            <van-icon catchtap="onDeleteAddress" id="{{item.id}}" size="40rpx" name="delete-o" color="red" style="margin-right: 12rpx" />
+            <van-icon catchtap="toEdit" id="{{item.id}}" size="40rpx" name="edit" />
+        </view>
+    </van-cell>
+</scroll-view>
+
+
+<view class="add-bottom">
+    <van-button bindtap="toAddressAdd" type="danger" block round>
+        <van-icon class="add-icon" name="plus" />
+        新建收货地址
+    </van-button>
+</view>

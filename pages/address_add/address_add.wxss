@@ -1,0 +1,16 @@
+/* pages/address_add/address_add.wxss */
+.address-page {
+    padding: 60rpx 0;
+}
+
+.address-btn {
+    padding: 40rpx;
+}
+
+.text-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    padding: 0 40rpx;
+    font-size: 28rpx;
+}
