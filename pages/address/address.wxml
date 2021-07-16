@@ -1,22 +1,29 @@
+
 <scroll-view class="main" scroll-y>
-    <van-cell
-            bind:click="selectAddress"
+    <van-swipe-cell 
             wx:for="{{address}}"
             wx:key="id"
+            right-width="{{ 160 }}" 
+            >
+        <van-cell
+            bind:click="selectAddress"
             center
             id="{{item.id}}"
             label="{{item.province + item.city + item.county + item.address}}">
 
-        <view slot="title">
-            <text>{{item.name}} {{item.phone}} </text>
-            <van-tag wx:if="{{item.is_default}}" type="danger">默认</van-tag>
-        </view>
+            <view slot="title">
+                <text>{{item.name}} {{item.phone}} </text>
+                <van-tag wx:if="{{item.is_default}}" type="danger">默认</van-tag>
+            </view>
 
-        <view slot="right-icon" >
-            <van-icon catchtap="onDeleteAddress" id="{{item.id}}" size="40rpx" name="delete-o" color="red" style="margin-right: 12rpx" />
-            <van-icon catchtap="toEdit" id="{{item.id}}" size="40rpx" name="edit" />
+            <van-icon slot="right-icon" catchtap="toEdit" id="{{item.id}}" size="40rpx" name="edit" />
+        </van-cell>
+
+        <view class="opt" slot="right">
+            <view bindtap="setDafault" id="{{item.id}}">设为默认</view>
+            <view bindtap="onDeleteAddress" id="{{item.id}}" >删除</view>
         </view>
-    </van-cell>
+    </van-swipe-cell>
 </scroll-view>
 
 

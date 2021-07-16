@@ -2,3 +2,9 @@
 .main {
     padding: 30rpx 0 120rpx;
 }
+.button-class {
+    width: 300rpx !important;
+}
+.bar-class {
+    width: 600rpx !important;
+}

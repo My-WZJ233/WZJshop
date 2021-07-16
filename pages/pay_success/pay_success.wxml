@@ -1,0 +1,7 @@
+<view class="main">
+    <van-icon name="checked" size="160rpx" color="#07c160" />
+
+    <view class="pay-success">支付成功</view>
+
+    <van-button block type="primary" bindtap="toOrderInfo">查看订单</van-button>
+</view>

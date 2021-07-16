@@ -1,0 +1,25 @@
+/* pages/order_info/order_info.wxss */
+page {
+    background: white
+}
+.main {
+    padding: 30rpx;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+.address view:last-child {
+    color: #888
+}
+.address , .goods, .order, .info-item {
+    margin-top: 40rpx;
+}
+.text, .price {
+    margin-left: 30rpx;
+    color: #666
+}
+.price {
+    color: red;
+}

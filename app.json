@@ -10,7 +10,9 @@
     "pages/goodsinfo/goodsinfo",
     "pages/preview/preview",
     "pages/address/address",
-    "pages/address_add/address_add"
+    "pages/address_add/address_add",
+    "pages/pay_success/pay_success",
+    "pages/order_info/order_info"
   ],
   "window":{
     "backgroundTextStyle":"light",

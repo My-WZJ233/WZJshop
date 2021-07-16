@@ -22,6 +22,11 @@ export const getAddressInfo = (id) => request.get('/api/address/' + id)
 export const updateAddress = (id, data) => request.put('/api/address/' + id, data)
 
 /**
- * 地址详情
+ * 删除地址
  */
 export const deleteAddress = (id) => request.delete('/api/address/' + id)
+
+/**
+ * 设置为默认地址
+ */
+export const setDefaultAddress = (id) => request.patch(`/api/address/${id}/default`)

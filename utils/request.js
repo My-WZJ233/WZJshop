@@ -9,9 +9,11 @@ const toast = (title, reject) => {
     reject(title)
 }
 
-const request = (url, method = "GET", data = {}) => {
+const request = (url, method = "GET", data = {}, isLoading = true) => {
     return new Promise((resolve, reject) => {
-        wx.showLoading({title: '加载中..'})
+        if (isLoading) {
+            wx.showLoading({title: '加载中..'})
+        }
         wx.request({
             url: baseUrl + url,
             method,
@@ -68,19 +70,19 @@ const request = (url, method = "GET", data = {}) => {
 
 const e = {
     request,
-    get: (url, data = {}) => request(url, 'GET', data),
-    post: (url, data = {}) => request(url, 'POST', data),
-    patch: (url, data = {}) => {
+    get: (url, data = {}, isLoading = true) => request(url, 'GET', data, isLoading),
+    post: (url, data = {}, isLoading = true) => request(url, 'POST', data, isLoading),
+    patch: (url, data = {}, isLoading = true) => {
         // 微信小程序不支持patch请求, 所以要处理一下
         data = {
             ...data,
             _method: 'PATCH'
         }
         // 使用post请求, 请求参数中的 _method 可以模拟要请求的方法, put patch delete 等
-        return request(url, 'POST', data)
+        return request(url, 'POST', data, isLoading)
     },
-    put: (url, data = {}) => request(url, 'put', data),
-    delete: (url, data = {}) => request(url, 'DELETE', data),
+    put: (url, data = {}, isLoading = true) => request(url, 'put', data, isLoading),
+    delete: (url, data = {}, isLoading = true) => request(url, 'DELETE', data, isLoading),
 }
 
 module.exports = e

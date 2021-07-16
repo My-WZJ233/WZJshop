@@ -10,3 +10,21 @@
 .add-icon {
     vertical-align: middle;
 }
+.opt {
+    height: 100%;
+    color: white;
+    font-size: 28rpx;
+    line-height: 130rpx;
+    width: 320rpx;
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.opt view:first-child {
+    width: 180rpx;
+    background-color: green;
+}
+.opt view:last-child {
+    width: 140rpx;
+    background-color: red;
+}

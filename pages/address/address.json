@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "地址列表",
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  }
 }

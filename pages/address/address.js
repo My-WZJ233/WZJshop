@@ -1,4 +1,4 @@
-const { getAddress, deleteAddress } = require("../../service/address")
+const { getAddress, deleteAddress, setDefaultAddress } = require("../../service/address")
 
 Page({
 
@@ -80,8 +80,36 @@ Page({
      * 选择地址
      */
     selectAddress(event) {
+        // 判断, 如果是由跟人中心进入的地址列表, 那么不做处理
+        const pages = getCurrentPages()
+        if(pages[pages.length - 2].route == 
+            'pages/center/center') return
+
         const id = event.target.id
         wx.setStorageSync('select_address', id)
         wx.navigateBack()
+    },
+
+    /**
+     * 设置为默认地址
+     */
+    setDafault(event) {
+        const id = event.target.id
+        // 2. 请求API, 执行设为默认
+        setDefaultAddress(id).then(() => {
+            // 3. 弹窗提示, 设置成功
+            wx.showToast({
+                title: '设置成功',
+                icon: 'success'
+            })
+
+            // 4. 更新 data 中的数据
+            this.setData({
+                address: this.data.address.map(item => {
+                    item.is_default = item.id == id ? 1 : 0
+                    return item
+                })
+            })
+        })
     }
 })
