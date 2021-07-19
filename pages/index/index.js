@@ -21,7 +21,7 @@ Page({
         if (index == 1) this.setData({search: {recommend: 1}})
         if (index == 2) this.setData({search: {new: 1}})
         this.setData({goods: [], page: 1})
-        this.getData(index)
+        this.getData()
     },
     /**
      * 页面触底事件

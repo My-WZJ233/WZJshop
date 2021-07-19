@@ -1,0 +1,36 @@
+/* pages/order/order.wxss */
+.main {
+    padding-bottom: 60rpx;
+}
+.order-item {
+    padding: 30rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+    width: 640rpx;
+    border-radius: 20rpx;
+    box-shadow: 0 12rpx 20rpx 0 rgba(95,101, 105, 0.15);
+    background-color: #fff;
+}
+.order-title {
+    color: #555;
+    padding: 0 10rpx 30rpx 0;
+    display: flex;
+    justify-content: space-between;
+}
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30rpx;
+}
+.time {
+    padding: 10rpx 12rpx;
+    color: #888;
+    font-size: 28rpx;
+}
+.opt {
+    text-align: right;
+}
+.opt button {
+    margin-left: 30rpx;
+}

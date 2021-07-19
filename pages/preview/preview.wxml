@@ -24,24 +24,4 @@ label="如果没有地址, 可以点击添加" is-link url="/pages/address/addre
         bind:submit="onCommitOrder"
 />
 
-<van-dialog
-        use-slot
-        title="支付"
-        show="{{ showPay }}"
-        show-cancel-button
-        confirm-button-open-type="getUserInfo"
-        bind:close="onClose"
-        bind:getuserinfo="getUserInfo"
-        style="text-align:center"
-        show-confirm-button="{{false}}"
-        cancel-button-text="稍后支付"
-        bind:cancel="toOrderInfo"
->
-    
-<van-image
-        width="460rpx"
-        height="460rpx"
-        fit="contain"
-        src="{{qr_code_url}}"
-/>
-</van-dialog>
+<pay-dialog id="pay-dialog" from="preview" order_id="{{order_id}}"></pay-dialog>

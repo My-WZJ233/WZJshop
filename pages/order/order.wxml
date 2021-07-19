@@ -1,0 +1,44 @@
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="待付款"></van-tab>
+  <van-tab title="已支付"></van-tab>
+  <van-tab title="待收货"></van-tab>
+  <van-tab title="已完成"></van-tab>
+  <van-tab title="已过期"></van-tab>
+</van-tabs>
+
+<view class="main">
+    <view wx:for="{{orders}}" wx:key="id" wx:for-item="order" class="order-item">
+        <view class="order-title">
+            <view>共 {{order.orderDetails.data.length}} 件商品</view>
+            <van-tag size="large" type="{{orderStatus[order.status].color}}">{{orderStatus[order.status].text}}</van-tag>
+        </view>
+        <van-card
+            wx:for="{{order.orderDetails.data}}"
+            wx:key="id"
+            wx:for-item="orderDatail"
+            num="{{orderDatail.num}}"
+            price="{{orderDatail.price}}"
+            desc="{{orderDatail.goods.description}}"
+            title="{{orderDatail.goods.title}}"
+            thumb="{{orderDatail.goods.cover_url}}"
+            />
+        <view class="bottom">
+            <view class="time">{{order.created_at}}</view>
+            <!-- 待付款 -->
+            <view wx:if="{{order.status == 1}}" class="opt">
+                <van-button bindtap="toOrderInfo" id="{{order.id}}" type="primary" size="small">去付款</van-button>
+            </view>
+            <!-- 待收货 -->
+
+            <!-- 已完成 -->
+        </view>
+    </view>
+</view>
+
+<van-empty wx:if="{{orders.length == 0}}"></van-empty>
+
+<view wx:if="{{isLoading}}" class="loading">
+  <van-loading>加载中...</van-loading>
+</view>
+
+<van-divider wx:if="{{isLast && orders.length > 1}}" contentPosition="center">没有更多数据了</van-divider>

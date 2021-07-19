@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "订单详情",
+  "usingComponents": {
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "pay-dialog": "../../components/pay-dialog/pay-dialog"
+  }
 }

@@ -60,10 +60,7 @@ Page({
         const data = {
             type,
             openid: wx.getStorageSync('openid')
-            /*
-               必须用自己的openid, 不要用userInfo里面的openid, 因为如果你登录了别人的微信,
-               那么你传的就是别人的 openid, 这样就会出现把别人账号解绑的情况
-            */
+            // 必须用自己的openid, 不要用userInfo里面的openid
         }
 
         // 2. 请求api, 执行绑定或者解绑

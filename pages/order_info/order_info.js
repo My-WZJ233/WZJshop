@@ -1,4 +1,5 @@
 import {orderInfo} from '../../service/order'
+import {orderStatus} from '../../utils/data'
 
 Page({
 
@@ -6,28 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        orderStatus: {
-            1: {
-                text: "未支付",
-                color: 'danger'
-            },
-            2: {
-                text: "已支付",
-                color: 'success'
-            },
-            3: {
-                text: '已发货',
-                color: 'success'
-            },
-            4: {
-                text: '已收货',
-                color: 'success'
-            },
-            5: {
-                text: '已过期',
-                color: 'danger'
-            },
-        },
+        orderStatus,
         order: {},
         orderDetails: [],
         address: {}
@@ -45,5 +25,16 @@ Page({
             })
         })
     },
+
+    /**
+     * 立即支付
+     */
+    payOrder() {
+        // 调用 子组件 支付方法, 弹出支付二维码
+        // 通过 selectComponent 获取子组件实例对象
+        const payDialog = this.selectComponent('#pay-dialog');
+        // 调用子组件实例对象的 getPayConfig() 方法, 弹出支付二维码
+        payDialog.getPayConfig() // 此方法在 子组件实例对象的原型链上
+    }
 
 })

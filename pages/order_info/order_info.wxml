@@ -35,3 +35,16 @@
         </view>
     </view>
 </view>
+
+<van-submit-bar
+    wx:if="{{order.status == 1}}"
+    price="{{ allPrice }}"
+    button-text="立即支付"
+    bind:submit="pay"
+    tip="{{ true }}"
+    button-class="button-class"
+    bar-class="bar-class"
+    bind:submit="payOrder"
+/>
+
+<pay-dialog id="pay-dialog" from="info" order_id="{{order.id}}"></pay-dialog>
