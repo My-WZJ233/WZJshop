@@ -17,7 +17,7 @@
 <van-tabs sticky>
     <van-tab title="详情">
         <view class="info">
-            <rich-text nodes="{{goodsInfo.details}}"></rich-text>
+            <rich-text nodes="{{goodsInfoShow}}"></rich-text>
         </view>
     </van-tab>
     <van-tab title="评论">
@@ -39,7 +39,7 @@
     </van-tab>
     <van-tab title="推荐">
         <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
-            <van-grid-item use-slot wx:for="{{ likeGoods }}">
+            <van-grid-item use-slot wx:for="{{ likeGoods }}" wx:key="id">
                 <goods-card goods="{{item}}"></goods-card>
             </van-grid-item>
         </van-grid>

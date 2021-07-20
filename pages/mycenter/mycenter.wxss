@@ -1,0 +1,4 @@
+/* pages/mycenter/mycenter.wxss */
+.mycenter-btn {
+    padding: 40rpx;
+}

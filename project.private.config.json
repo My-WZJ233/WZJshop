@@ -13,14 +13,20 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "pages/login/login",
-                    "pathName": "pages/login/login",
+                    "name": "pages/center/center",
+                    "pathName": "pages/center/center",
                     "query": "",
                     "scene": null
                 },
                 {
                     "name": "pages/register/register",
                     "pathName": "pages/register/register",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/order/order",
+                    "pathName": "pages/order/order",
                     "query": "",
                     "scene": null
                 }

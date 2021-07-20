@@ -34,3 +34,11 @@
 .opt button {
     margin-left: 30rpx;
 }
+.login-btn {
+    padding: 40rpx;
+}
+.tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}

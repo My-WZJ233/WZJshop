@@ -1,5 +1,5 @@
 <view class="main">
-  <van-row wx:for="{{goods}}">
+  <van-row wx:for="{{goods}}" wx:key="id">
     <van-col span="2">
       <view class="left-checkbox">
         <van-checkbox value="{{ item.is_checked }}" id="{{item.id}}" bind:change="oneSelect"></van-checkbox>

@@ -13,7 +13,8 @@
     "pages/address_add/address_add",
     "pages/pay_success/pay_success",
     "pages/order_info/order_info",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/mycenter/mycenter"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -65,6 +66,7 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-tag": "@vant/weapp/tag/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   }
 }

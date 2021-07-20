@@ -1,40 +1,43 @@
-<view class="main">
-    <view>
-        <view class="top">
-            <view>共计 {{orderDetails.length}} 件商品</view>
-            <van-tag size="large" type="{{orderStatus[order.status].color}}">{{orderStatus[order.status].text}}</van-tag>
+<van-skeleton title row="5" loading="{{loading}}">
+    <view class="main">
+        <view>
+            <view class="top">
+                <view>共计 {{orderDetails.length}} 件商品</view>
+                <van-tag size="large" type="{{orderStatus[order.status].color}}">{{orderStatus[order.status].text}}</van-tag>
+            </view>
+            <view class="address">
+                <view>{{address.name}} {{address.phone}}</view>
+                <view>{{address.province + address.city + address.county + address.address}}</view>
+            </view>
         </view>
-        <view class="address">
-            <view>{{address.name}} {{address.phone}}</view>
-            <view>{{address.province + address.city + address.county + address.address}}</view>
-        </view>
-    </view>
 
-    <view class="goods">
-        <van-card
-            wx:for="{{orderDetails}}"
-            num="{{item.num}}"
-            price="{{item.price}}"
-            title="{{item.goods.title}}"
-            desc="{{item.goods.description}}"
-            thumb="{{item.goods.cover_url}}"
-            />
-    </view>
+        <view class="goods">
+            <van-card
+                wx:for="{{orderDetails}}"
+                wx:key="id"
+                num="{{item.num}}"
+                price="{{item.price}}"
+                title="{{item.goods.title}}"
+                desc="{{item.goods.description}}"
+                thumb="{{item.goods.cover_url}}"
+                />
+        </view>
 
-    <view class="order">
-        <view class="info-item">
-            <view>订单编号: <text class="text">{{order.order_no}}</text></view>
-            <view>下单时间:  <text class="text">{{order.created_at}}</text></view>
-        </view>
-        <view wx:if="{{order.pay_time}}" class="info-item">
-            <view>支付方式:  <text class="text">{{order.pay_type}}</text></view>
-            <view>支付时间:  <text class="text">{{order.pay_time}}</text></view>
-        </view>
-        <view class="info-item">
-            <view>商品总额:  <text class="price">¥ {{order.amount}}</text></view>
+        <view class="order">
+            <view class="info-item">
+                <view>订单编号: <text class="text">{{order.order_no}}</text></view>
+                <view>下单时间:  <text class="text">{{order.created_at}}</text></view>
+            </view>
+            <view wx:if="{{order.pay_time}}" class="info-item">
+                <view>支付方式:  <text class="text">{{order.pay_type}}</text></view>
+                <view>支付时间:  <text class="text">{{order.pay_time}}</text></view>
+            </view>
+            <view class="info-item">
+                <view>商品总额:  <text class="price">¥ {{order.amount}}</text></view>
+            </view>
         </view>
     </view>
-</view>
+</van-skeleton>
 
 <van-submit-bar
     wx:if="{{order.status == 1}}"

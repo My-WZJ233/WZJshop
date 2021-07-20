@@ -1,13 +1,41 @@
-<van-tabs active="{{ active }}" bind:change="onChange">
+<view class="tabs">
+  <van-tabs bind:change="onChange">
   <van-tab title="待付款"></van-tab>
   <van-tab title="已支付"></van-tab>
   <van-tab title="待收货"></van-tab>
   <van-tab title="已完成"></van-tab>
   <van-tab title="已过期"></van-tab>
 </van-tabs>
+</view>
+
+<van-popup
+  show="{{ show }}"
+  position="top"
+  close-on-click-overlay
+  closeable
+  custom-style="height: 50%;"
+  bind:close="onClose"
+>
+
+<van-cell-group>
+  <van-field
+    model:value="{{ content }}"
+    type="textarea"
+    placeholder="请输入评价内容"
+    border="{{ false }}"
+    bind:change="onPopupTextChange"
+    maxlength='200'
+    autosize
+  />
+</van-cell-group>
+
+<view class="login-btn">
+        <van-button block type="primary" bindtap="doCommentGoods">提交</van-button>
+</view>
+</van-popup>
 
 <view class="main">
-    <view wx:for="{{orders}}" wx:key="id" wx:for-item="order" class="order-item">
+    <view bindtap="toOrderInfo" wx:for="{{orders}}" wx:key="index" wx:for-item="order" class="order-item"   id="{{order.id}}">
         <view class="order-title">
             <view>共 {{order.orderDetails.data.length}} 件商品</view>
             <van-tag size="large" type="{{orderStatus[order.status].color}}">{{orderStatus[order.status].text}}</van-tag>
@@ -22,15 +50,27 @@
             title="{{orderDatail.goods.title}}"
             thumb="{{orderDatail.goods.cover_url}}"
             />
+            
         <view class="bottom">
             <view class="time">{{order.created_at}}</view>
             <!-- 待付款 -->
             <view wx:if="{{order.status == 1}}" class="opt">
-                <van-button bindtap="toOrderInfo" id="{{order.id}}" type="primary" size="small">去付款</van-button>
+                <van-button catchtap="toOrderInfo" id="{{order.id}}" type="primary" size="small">去付款</van-button>
             </view>
             <!-- 待收货 -->
-
-            <!-- 已完成 -->
+            <view wx:if="{{order.status == 3}}" class="opt">
+                <van-button catchtap="confirmGoods" data-order_no="{{order.order_no}}" id="{{order.id}}" type="primary" size="small">确认收货</van-button>
+            </view>
+            <!-- 已完成
+                方式1: 使用独立的页面, 比较麻烦, 要出里页面回跳
+                方式2: dialog 弹窗
+                方式3: popup 弹出层
+            -->
+            <view wx:if="{{order.status == 4}}" class="opt">
+                <van-button catchtap="openCommentGoods" id="{{order.id}}" data-order="{{order}}" type="primary" size="small">立即评价</van-button>
+                
+            </view>
+            
         </view>
     </view>
 </view>

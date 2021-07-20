@@ -10,7 +10,9 @@ Page({
         orderStatus,
         order: {},
         orderDetails: [],
-        address: {}
+        address: {},
+        loading: true,
+        allPrice: 0,
     },
 
     /**
@@ -21,7 +23,9 @@ Page({
             this.setData({
                 order: order,
                 orderDetails: order.orderDetails.data,
-                address: order.address
+                address: order.address,
+                loading: false,
+                allPrice: order.orderDetails.data.reduce((p, c) => p + c.price * c.num * 100, 0)
             })
         })
     },

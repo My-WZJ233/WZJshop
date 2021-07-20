@@ -11,7 +11,7 @@
 </van-tabs>
 
 <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{ goods }}" wx:key="index">
+  <van-grid-item use-slot wx:for="{{ goods }}" wx:key="index" wx:key="id">
     <goods-card goods="{{item}}"></goods-card>
   </van-grid-item>
 </van-grid>

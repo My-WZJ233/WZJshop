@@ -13,6 +13,7 @@ Page({
         comments: [],
         isCollect: 0,
         cartsList: [],
+        goodsInfoShow: ''
     },
 
     /**
@@ -34,6 +35,7 @@ Page({
                 goodsInfo: res.goods,
                 comments: res.goods.comments,
                 isCollect: res.goods.is_collect,
+                goodsInfoShow: res.goods.details.replace(/\<img/gi, '<img style="max-width:100% !important;height:auto !important;"')
             })
         })
 

@@ -1,0 +1,16 @@
+<view class="register-page">
+    <van-cell-group>
+        <van-field
+                model:value="{{ name }}"
+                label="新昵称"
+                placeholder="修改昵称"
+                error-message="{{error_name}}"
+                bind:change="updateName"
+        />
+    </van-cell-group>
+    <view class="mycenter-btn">
+        <van-button block type="primary" bindtap="edieNmae">提交</van-button>
+    </view>
+</view>
+
+<van-toast id="van-toast" />

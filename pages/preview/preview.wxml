@@ -6,6 +6,7 @@ label="如果没有地址, 可以点击添加" is-link url="/pages/address/addre
 <view class="main">
     <van-card
             wx:for="{{carts}}"
+            wx:key="id"
             price="{{ item.goods.price }}"
             num="{{item.num}}"
             title="{{item.goods.title}}"
