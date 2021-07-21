@@ -1,0 +1,34 @@
+<view class="register-page">
+    <van-cell-group>
+        <van-field
+                model:value="{{ old_password }}"
+                label="旧密码"
+                placeholder="请输入旧密码"
+                password
+                error-message="{{error_password}}"
+                bind:change="checkInput"
+        />
+        <van-field
+                model:value="{{ password }}"
+                label="新密码"
+                placeholder="请输入新密码"
+                password
+                error-message="{{error_password}}"
+                bind:change="checkInput"
+        />
+        <van-field
+                model:value="{{ password_confirmation }}"
+                label="确认密码"
+                placeholder="确认新密码"
+                password
+                error-message="{{error_password_confirm}}"
+                bind:change="checkInput"
+        />
+    </van-cell-group>
+
+    <view class="register-btn">
+        <van-button block type="primary" bindtap="editPassword">修改</van-button>
+    </view>
+</view>
+
+<van-toast id="van-toast" />

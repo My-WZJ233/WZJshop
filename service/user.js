@@ -10,4 +10,4 @@ export const updateAvatar = (data = {}) => request.patch('/api/user/avatar', dat
 export const updateName = (data = {}) => request.put('/api/user', data)
 
 // 修改密码
-export const updatePassword = () => request.post('/api/auth/password/update')
+export const updatePassword = (data = {}) => request.post('/api/auth/password/update', data)

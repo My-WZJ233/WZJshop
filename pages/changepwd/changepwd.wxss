@@ -1,0 +1,13 @@
+/* pages/changepwd/changepwd.wxss */
+/* pages/register/register.wxss */
+.register-page {
+    padding: 100rpx 0;
+}
+
+.register-btn {
+    padding: 40rpx;
+}
+.avatar {
+    text-align: center;
+    padding: 40rpx 0;
+}

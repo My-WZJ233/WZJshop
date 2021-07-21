@@ -34,6 +34,9 @@ Page({
                     title: '修改成功',
                     icon: 'success'
                 })
+                wx.reLaunch({
+                  url: '/pages/center/center',
+                })
             })
         })
     }

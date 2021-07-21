@@ -19,8 +19,8 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/register/register",
-                    "pathName": "pages/register/register",
+                    "name": "pages/changepwd/changepwd",
+                    "pathName": "pages/changepwd/changepwd",
                     "query": "",
                     "scene": null
                 },

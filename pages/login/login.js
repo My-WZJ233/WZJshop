@@ -1,6 +1,11 @@
 const validate = require('../../utils/validate')
 const {doLogin} = require('../../utils/auth')
 
+/**
+ * 123456@abc.com
+ * 123456
+ */
+
 Page({
 
     /**
