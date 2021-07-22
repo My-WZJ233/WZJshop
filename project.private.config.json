@@ -19,8 +19,8 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/changepwd/changepwd",
-                    "pathName": "pages/changepwd/changepwd",
+                    "name": "pages/goods/goods",
+                    "pathName": "pages/goods/goods",
                     "query": "",
                     "scene": null
                 },

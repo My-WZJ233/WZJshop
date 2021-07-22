@@ -203,7 +203,6 @@ Page({
                 // rateValue: '1',
                 // starValue: 3,
             })
-            this.getData()
         }
     }
 })
