@@ -180,7 +180,7 @@ Page({
               })
         }else{
             // 4. 订单有多个商品, 所以 循环 this.data.nowCommentOrder.orderDetails.data
-            for(var i=0;i<this.data.nowCommentOrder.length;i++){
+            for(var i=0; i < this.data.nowCommentOrder.length; i++) {
                 let data = {
                     goods_id: this.data.nowCommentOrder[i].goods_id,
                     content: this.data.content,

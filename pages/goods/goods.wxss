@@ -1,1 +1,6 @@
 /* pages/goods/goods.wxss */
+#top {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}

@@ -1,44 +1,33 @@
+<view id="top">
+
 <van-search
-  value="{{ value }}"
+  model:value="{{ keyword }}"
   label=""
   placeholder="请输入搜索关键词"
   use-action-slot
-  bind:change="onChange"
   bind:search="onSearch"
 >
   <view slot="action" bind:tap="onClick">搜索</view>
 </van-search>
 
+<!-- 筛选 -->
 <van-dropdown-menu>
-  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item bind:change="onSortChange" value="{{ sortValue }}" options="{{ sortOption }}" />
   <van-dropdown-item id="item" title="{{ itemTitle }}">
-    <van-cell title="{{ switchTitle1 }}">
-      <van-switch
-        slot="right-icon"
-        size="24px"
-        style="height: 26px"
-        checked="{{ switch1 }}"
-        active-color="#ee0a24"
-        bind:change="onSwitch1Change"
-      />
-    </van-cell>
-    <van-cell title="{{ switchTitle2 }}">
-      <van-switch
-        slot="right-icon"
-        size="24px"
-        style="height: 26px"
-        checked="{{ switch2 }}"
-        active-color="#ee0a24"
-        bind:change="onSwitch2Change"
-      />
-    </van-cell>
-    <view style="padding: 5px 16px;">
-      <van-button type="danger" block round bind:click="onConfirm">
-        确认
-      </van-button>
+    <van-tree-select
+      items="{{ categories }}"
+      main-active-index="{{ mainActiveIndex }}"
+      active-id="{{ category_id }}"
+      bind:click-nav="onClickNav"
+      bind:click-item="onClickItem"
+      bind:change="onChange"
+/>
+<view style="padding: 5px 16px;">
+      <van-button type="danger" block round bind:click="onConfirm">确认</van-button>
     </view>
   </van-dropdown-item>
 </van-dropdown-menu>
+</view>
 
 <!-- 商品列表 -->
 <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
@@ -46,3 +35,9 @@
         <goods-card goods="{{item}}"></goods-card>
     </van-grid-item>
 </van-grid>
+
+<view wx:if="{{isLoading}}" class="loading">
+  <van-loading>加载中...</van-loading>
+</view>
+
+<van-divider wx:if="{{isLast}}" contentPosition="center">没有更多数据了</van-divider>

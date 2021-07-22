@@ -9,4 +9,4 @@ export const collectGoods = id => request.post('/api/collects/goods/' + id)
 /**
  * 商品列表页数据
  */
-export const getGoodsList = () => request.get('/api/goods')
+export const getGoodsList = (data = {}) => request.get('/api/goods', data)
