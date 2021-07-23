@@ -4,11 +4,13 @@
   </swiper-item>
 </swiper>
 
-<van-tabs bind:change="onChange">
+<van-sticky>
+<van-tabs bind:change="onChange" sticky>
   <van-tab title="热销商品"></van-tab>
   <van-tab title="推荐商品"></van-tab>
   <van-tab title="最新商品"></van-tab>
 </van-tabs>
+</van-sticky>
 
 <van-grid column-num="2" gutter="{{ 20 }}" border="{{ false }}">
   <van-grid-item use-slot wx:for="{{ goods }}" wx:key="index" wx:key="id">

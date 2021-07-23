@@ -29,6 +29,12 @@
                     "pathName": "pages/order/order",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/collects/collects",
+                    "pathName": "pages/collects/collects",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

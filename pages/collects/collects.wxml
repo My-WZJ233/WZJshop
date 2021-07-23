@@ -1,0 +1,16 @@
+<view class="card">
+  <van-card
+    wx:for="{{collectsList}}" 
+    wx:key="index"
+    thumb-link="/pages/goodsinfo/goodsinfo?id={{item.goods.id}}"
+    desc="{{item.goods.description}}"
+    thumb="{{item.goods.cover_url}}"
+    title="{{item.goods.title}}"
+    price="{{item.goods.price}}">
+    <view slot="num">{{item.created_at}}</view>
+    <view slot="footer">
+      <van-button size="mini" bindtap="cancelCollection" id="{{item.goods_id}}">取消收藏</van-button>
+    </view>
+  </van-card>
+</view>
+<van-divider wx:if="{{isLast}}" contentPosition="center">没有更多数据了</van-divider>
