@@ -18,6 +18,11 @@ const min = (str, len) => {
     return false
 }
 
+const max = (str, len) => {
+    if(str.length <= len) return true
+    return false
+}
+
 /**
  * 是否是相同的字符串
  * @param str1
@@ -42,6 +47,7 @@ const phone = phone => {
 module.exports = {
     email,
     min,
+    max,
     confirm,
     phone
 }

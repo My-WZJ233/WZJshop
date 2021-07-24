@@ -1,0 +1,12 @@
+/* pages/bindemail/bindemail.wxss */
+.bind-page {
+    padding: 100rpx 0;
+}
+
+.bind-btn {
+    padding: 40rpx;
+}
+.avatar {
+    text-align: center;
+    padding: 40rpx 0;
+}

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "地址列表",
+  "navigationBarTitleText": "收货地址",
   "usingComponents": {
     "van-swipe-cell": "@vant/weapp/swipe-cell/index"
   }

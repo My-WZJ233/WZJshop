@@ -16,7 +16,8 @@
     "pages/order/order",
     "pages/mycenter/mycenter",
     "pages/changepwd/changepwd",
-    "pages/collects/collects"
+    "pages/collects/collects",
+    "pages/bindemail/bindemail"
   ],
   "window":{
     "backgroundTextStyle":"light",

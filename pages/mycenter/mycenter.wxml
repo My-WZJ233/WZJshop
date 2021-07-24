@@ -3,7 +3,7 @@
         <van-field
                 model:value="{{ name }}"
                 label="新昵称"
-                placeholder="修改昵称"
+                placeholder="{{userInfo.name}}"
                 error-message="{{error_name}}"
                 bind:change="updateName"
         />

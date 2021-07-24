@@ -64,7 +64,7 @@ Page({
         }
 
         // 全部验证通过才返回 true
-        if(checkPassword &&  checkConfirm) return true
+        if (checkPassword &&  checkConfirm) return true
         return false
     }
 })

@@ -18,6 +18,7 @@
         <van-cell title="我的订单" url="/pages/order/order" icon="orders-o" is-link/>
         <van-cell title="我的收藏" url="/pages/collects/collects" icon="goods-collect-o" is-link/>
         <van-cell title="修改密码" url="/pages/changepwd/changepwd" icon="edit" is-link/>
+        <van-cell title="更新邮箱" url="/pages/bindemail/bindemail" icon="envelop-o" is-link/>
         <van-cell title="绑定微信"
                   icon="setting-o" is-link
                  bindtap="bindOrUnbind"

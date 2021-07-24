@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "商品",
   "usingComponents": {
     "upload-oss": "../../components/upload-oss/upload-oss",
     "van-search": "@vant/weapp/search/index",

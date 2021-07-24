@@ -11,3 +11,9 @@ export const updateName = (data = {}) => request.put('/api/user', data)
 
 // 修改密码
 export const updatePassword = (data = {}) => request.post('/api/auth/password/update', data)
+
+// 邮箱
+export const updateEmail = (data) => request.patch('/api/auth/email/update', data)
+
+// 邮箱验证码
+export const emailCode = (data = {}) => request.post('/api/auth/email/code', data)

@@ -12,8 +12,7 @@
   show="{{ show }}"
   position="top"
   close-on-click-overlay
-  closeable
-  custom-style="height: 50%;"
+  custom-style="height: 35%;"
   bind:close="onClose"
 >
 
