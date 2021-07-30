@@ -33,7 +33,6 @@ Page({
             goodsId: event.target.id
         })
         collectGoods(this.data.goodsId).then(() => {
-            // 弹窗提醒
             wx.showToast({
                 title: '已取消收藏',
                 icon: 'success'

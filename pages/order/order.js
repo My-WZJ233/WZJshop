@@ -123,7 +123,8 @@ Page({
                     // 2. 发送请求, 执行确认收货
                     Confirm(order_id, order_no).then(() => {
                         this.setData({
-                            status: 4
+                            status: 4,
+                            orders:[]
                         })
 
                         wx.showToast({
@@ -174,18 +175,16 @@ Page({
      */
     doCommentGoods() {
         // console.log(this.data.nowCommentOrder[0].goods_id);
-        if(!this.data.content.trim()){
+        if (!this.data.content.trim()){
             wx.showToast({
                 title: '请输入评论内容'
               })
-        }else{
+        } else {
             // 4. 订单有多个商品, 所以 循环 this.data.nowCommentOrder.orderDetails.data
-            for(var i=0; i < this.data.nowCommentOrder.length; i++) {
+            for (var i = 0; i < this.data.nowCommentOrder.length; i++) {
                 let data = {
                     goods_id: this.data.nowCommentOrder[i].goods_id,
-                    content: this.data.content,
-                    // rate: this.data.rateValue,
-                    // star: this.data.starValue
+                    content: this.data.content
                 }
                 // console.log(this.data.commentOrder_id,data);
                 // 5. 在循环的过程中, 请求API, 执行商品评论 
@@ -200,8 +199,6 @@ Page({
             }
             this.setData({
                 show: false,
-                // rateValue: '1',
-                // starValue: 3,
             })
         }
     }

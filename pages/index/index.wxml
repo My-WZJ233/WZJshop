@@ -3,7 +3,7 @@
     <image src="{{slide.img_url}}"/>
   </swiper-item>
 </swiper>
-
+<hello ></hello>
 <van-sticky>
 <van-tabs bind:change="onChange" sticky>
   <van-tab title="热销商品"></van-tab>
